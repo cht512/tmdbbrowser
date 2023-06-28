@@ -92,7 +92,6 @@ export const CustomPagination = (props: CustomPaginationProps) => {
 
     const numbers = [1, 2, 3, 4, 5, 6, 7];
 
-
     return (
         <div
             className="pagination-container d-flex align-items-center mt-3 mb-4">
@@ -132,11 +131,9 @@ export const CustomPagination = (props: CustomPaginationProps) => {
                         placeholder={props.currentPage}
                     />
                     <span className="m-2"> /&nbsp; {props.totalPages}</span>
-
                 </div>
             </form>
         </div>
     )
-
 };
 
