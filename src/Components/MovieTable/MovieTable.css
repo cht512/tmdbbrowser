@@ -37,12 +37,15 @@
 
 tr:hover .poster {
     border-radius: 0;
-    transition: 0.5s;
+    transition: 0.75s;
+    transition-delay: 0.15s;
 }
 
 .poster {
+    height: 427px;
     max-width: 285px;
     border-radius: 13px;
+    object-fit: cover;
 }
 
 .image-column {
