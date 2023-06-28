@@ -88,7 +88,6 @@ const MovieTable = () => {
                 dispatch({type: "SET_LOADING", payload: false})
                 return;
             }
-
             const pageData = result.results.slice(startIndex, endIndex)
             dispatch({type: 'SET_CURRENT_PAGE_DATA', payload: pageData})
             dispatch({type: "SET_LOADING", payload: false})
@@ -157,7 +156,7 @@ const MovieTable = () => {
                                             <img
                                                 alt=""
                                                 className="poster"
-                                                src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
+                                                src={poster_path ? `https://image.tmdb.org/t/p/w500/${poster_path}` : `%PUBLIC_URL%/no-image.webp` }
                                                 loading="lazy"
                                             />
                                         </td>

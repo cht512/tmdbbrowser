@@ -17,6 +17,7 @@ export const SearchBar = (props:SearchBarProps) => {
                 placeholder={`Search through ${props.totalResults} movies... `}
                 className="searchbar"
                 onChange={event => props.onSearch(event.target.value)}
+                id={'searchbar-input'}
             />
             {props.loading ? <div className="loading-spinner"/> : <div className="loading-spinner invisible"/>}
         </div>

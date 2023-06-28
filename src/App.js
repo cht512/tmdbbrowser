@@ -4,11 +4,11 @@ import MovieTable from "./Components/MovieTable/MovieTable";
 function App() {
 
 
-  return (
-    <div className="App">
-          <MovieTable></MovieTable>
-    </div>
-  );
+    return (
+        <>
+            <MovieTable></MovieTable>
+        </>
+    );
 }
 
 export default App;
