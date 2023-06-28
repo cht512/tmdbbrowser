@@ -75,6 +75,7 @@ const MovieTableDefaultLayout = () => {
             const pageData = result.results.slice(startIndex, endIndex)
             dispatch({type: 'SET_CURRENT_PAGE_DATA', payload: pageData})
             dispatch({type: "SET_LOADING", payload: false})
+
         } else {
             const result = await searchByTerm(searchTerm, apiPageCount)
             dispatch({type: "SET_TOTAL_RESULTS", payload: result})
@@ -91,11 +92,8 @@ const MovieTableDefaultLayout = () => {
             const pageData = result.results.slice(startIndex, endIndex)
             dispatch({type: 'SET_CURRENT_PAGE_DATA', payload: pageData})
             dispatch({type: "SET_LOADING", payload: false})
-
         }
-
     };
-
 
     const handlePageSizeChange = (size) => {
         if (!(size > 7) && !(size < 1)) {
@@ -127,12 +125,12 @@ const MovieTableDefaultLayout = () => {
 
     return (
         <Container>
+
             <SearchBar
                 onSearch={(term) => handleSearch(term)}
                 totalResults={totalApiResults}
                 loading={loading}
             />
-
 
             {currentPageData && currentPageData.length > 0 ? (
                 <div className={`table-wrapper ${loading ? "loading" : ""}`}>
@@ -166,7 +164,7 @@ const MovieTableDefaultLayout = () => {
                                                 <strong className="fs-3">{original_title}</strong>
                                             </div>
                                             <div className="mb-2 position-absolute bottom-0">
-                                                <span className="genre-label">genre &nbsp;</span>
+                                                <span className={`genre-label ${loading ? "invisible" : ""}`}>genre &nbsp;</span>
 
                                                 {genre_ids &&
                                                     genre_ids.map((genreId) => {
@@ -188,7 +186,6 @@ const MovieTableDefaultLayout = () => {
                 </div>
             ) : (<div className="my-3 text-center">Nothing found...</div>)}
 
-
             <CustomPagination
                 onPageChange={(page) => handlePageChange(page)}
                 onPageSizeChange={(size) => handlePageSizeChange(size)}
@@ -196,6 +193,7 @@ const MovieTableDefaultLayout = () => {
                 totalPages={totalPages}
                 pageSize={pageSize}
             />
+
         </Container>
     );
 };

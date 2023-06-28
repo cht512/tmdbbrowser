@@ -9,7 +9,6 @@ type SearchBarProps = {
 
 export const SearchBar = (props:SearchBarProps) => {
 
-
     return (
         <div className="search-bar-container">
             <input

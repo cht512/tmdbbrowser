@@ -91,11 +91,8 @@ const MovieTable = () => {
             const pageData = result.results.slice(startIndex, endIndex)
             dispatch({type: 'SET_CURRENT_PAGE_DATA', payload: pageData})
             dispatch({type: "SET_LOADING", payload: false})
-
         }
-
     };
-
 
     const handlePageSizeChange = (size) => {
         if (!(size > 7) && !(size < 1)) {
@@ -156,7 +153,7 @@ const MovieTable = () => {
                                             <img
                                                 alt=""
                                                 className="poster"
-                                                src={poster_path ? `https://image.tmdb.org/t/p/w500/${poster_path}` : "/no-image.webp" }
+                                                src={poster_path ? `https://image.tmdb.org/t/p/w500/${poster_path}` : "/no-image.webp"}
                                                 loading="lazy"
                                             />
                                         </td>
@@ -189,7 +186,6 @@ const MovieTable = () => {
                     </BootstrapTable>
                 </div>
             ) : (<div className="my-3 text-center">Nothing found...</div>)}
-
 
             <CustomPagination
                 onPageChange={(page) => handlePageChange(page)}

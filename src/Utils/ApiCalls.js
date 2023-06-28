@@ -17,7 +17,6 @@ export const getMoviePage = async (page:number) => {
     catch (error) {
         console.log(error)
     }
-
 }
 
 export const getGenreList = async () => {
