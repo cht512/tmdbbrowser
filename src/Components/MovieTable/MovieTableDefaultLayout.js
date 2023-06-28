@@ -2,14 +2,14 @@ import React, {useEffect, useReducer} from 'react';
 import BootstrapTable from 'react-bootstrap/Table';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {getGenreList, getMoviePage, searchByTerm} from "../../Utils/ApiCalls";
-import './MovieTable.css'
+import './MovieTableDefaultLayout.css'
 import {Container} from "react-bootstrap";
 import {initialState, reducer} from "./MovieTableReducer";
 import {CustomPagination} from "../Pagination/CustomPagination";
 import {apiPageLimit, apiPageSize} from "../../Utils/Constants";
 import {SearchBar} from "../SearchBar/SearchBar";
 
-const MovieTable = () => {
+const MovieTableDefaultLayout = () => {
     const [state, dispatch] = useReducer(reducer, initialState);
     const {
         loading,
@@ -152,23 +152,22 @@ const MovieTable = () => {
                                     index
                                 ) => (
                                     <tr key={index}>
-                                        <td className="image-column">
+                                        <td className="image-column-default">
                                             <img
                                                 alt=""
-                                                className="poster"
+                                                className="poster-default"
                                                 src={poster_path ? `https://image.tmdb.org/t/p/w500/${poster_path}` : "/no-image.webp" }
                                                 loading="lazy"
                                             />
                                         </td>
-                                        <td className="text-start ">
-                                            <div className="fs-5">
+                                        <td className={`text-start ${loading ? "" : "position-relative"}`}>
+                                            <div className="fs-4">
                                                 <span>{index + 1 + currentPage * pageSize - pageSize}. &nbsp;</span>
-                                                <strong>{original_title}</strong>
+                                                <strong className="fs-3">{original_title}</strong>
                                             </div>
-                                            <div>
-                                                <span className="release-date">{release_date}</span>
-                                            </div>
-                                            <div className="mt-2">
+                                            <div className="mb-2 position-absolute bottom-0">
+                                                <span className="genre-label">genre &nbsp;</span>
+
                                                 {genre_ids &&
                                                     genre_ids.map((genreId) => {
                                                         const genre = genreList.find(
@@ -176,11 +175,10 @@ const MovieTable = () => {
                                                         );
                                                         return (
                                                             <span key={genreId}
-                                                                  className="genre-badge px-2">{genre && genre.name}</span>
+                                                                  className={`genre-badge px-2 ${loading ? "invisible" : ""}`}>{genre && genre.name}</span>
                                                         );
                                                     })}
                                             </div>
-                                            <div className="mt-3">{overview}</div>
                                         </td>
                                     </tr>
                                 )
@@ -202,4 +200,4 @@ const MovieTable = () => {
     );
 };
 
-export default MovieTable;
+export default MovieTableDefaultLayout;
